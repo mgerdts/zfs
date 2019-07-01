@@ -28,9 +28,9 @@
 .\" Copyright (c) 2014 Integros [integros.com]
 .\" Copyright 2019 Richard Laager. All rights reserved.
 .\" Copyright 2018 Nexenta Systems, Inc.
-.\" Copyright 2018 Joyent, Inc.
+.\" Copyright 2019 Joyent, Inc.
 .\"
-.Dd April 30, 2019
+.Dd June 30, 2019
 .Dt ZFS 8 SMM
 .Os Linux
 .Sh NAME
@@ -41,12 +41,12 @@
 .Fl ?V
 .Nm
 .Cm create
-.Op Fl p
+.Op Fl Pnpv
 .Oo Fl o Ar property Ns = Ns Ar value Oc Ns ...
 .Ar filesystem
 .Nm
 .Cm create
-.Op Fl ps
+.Op Fl Pnpsv
 .Op Fl b Ar blocksize
 .Oo Fl o Ar property Ns = Ns Ar value Oc Ns ...
 .Fl V Ar size Ar volume
@@ -2556,7 +2556,7 @@ subcommand.
 .It Xo
 .Nm
 .Cm create
-.Op Fl p
+.Op Fl Pnpv
 .Oo Fl o Ar property Ns = Ns Ar value Oc Ns ...
 .Ar filesystem
 .Xc
@@ -2585,6 +2585,22 @@ Any property specified on the command line using the
 .Fl o
 option is ignored.
 If the target filesystem already exists, the operation completes successfully.
+.It Fl n
+Do a dry-run
+.Pq Qq No-op
+creation.
+No datasets will be created.
+This is useful in conjunction with the
+.Fl v
+or
+.Fl P
+flags to validate properties that are passed via
+.Fl o
+options and those implied by other options.
+.It Fl P
+Print machine-parsable verbose information about the created dataset.
+.It Fl v
+Print verbose information about the created dataset.
 .El
 .It Xo
 .Nm
@@ -2641,6 +2657,22 @@ See
 in the
 .Sx Native Properties
 section for more information about sparse volumes.
+.It Fl n
+Do a dry-run
+.Pq Qq No-op
+creation.
+No datasets will be created.
+This is useful in conjunction with the
+.Fl v
+or
+.Fl P
+flags to validate properties that are passed via
+.Fl o
+options and those implied by other options.
+.It Fl P
+Print machine-parsable verbose information about the created dataset.
+.It Fl v
+Print verbose information about the created dataset.
 .El
 .It Xo
 .Nm
